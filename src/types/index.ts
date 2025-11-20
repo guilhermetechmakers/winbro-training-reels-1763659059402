@@ -209,3 +209,72 @@ export interface ReprocessStatus {
   started_at: string;
   completed_at?: string;
 }
+
+// Checkout & Billing types
+export interface BillingDetails {
+  id?: string;
+  user_id: string;
+  company_name: string;
+  billing_address: {
+    line1: string;
+    line2?: string;
+    city: string;
+    state: string;
+    postal_code: string;
+    country: string;
+  };
+  tax_id?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface Transaction {
+  id: string;
+  user_id: string;
+  subscription_id?: string;
+  plan_id: string;
+  amount: number;
+  currency: string;
+  status: 'pending' | 'completed' | 'failed' | 'refunded';
+  payment_method: string;
+  promo_code_id?: string;
+  invoice_url?: string;
+  created_at: string;
+}
+
+export interface PromoCode {
+  id: string;
+  code: string;
+  discount_type: 'percentage' | 'fixed';
+  discount_value: number;
+  expiration_date?: string;
+  usage_count: number;
+  max_usage?: number;
+  is_active: boolean;
+}
+
+export interface InvoicePreview {
+  subtotal: number;
+  discount: number;
+  tax: number;
+  total: number;
+  currency: string;
+  items: Array<{
+    description: string;
+    quantity: number;
+    unit_price: number;
+    total: number;
+  }>;
+}
+
+export interface PaymentMethod {
+  id: string;
+  type: 'card';
+  card: {
+    brand: string;
+    last4: string;
+    exp_month: number;
+    exp_year: number;
+  };
+  is_default: boolean;
+}
