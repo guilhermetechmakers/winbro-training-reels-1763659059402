@@ -278,3 +278,39 @@ export interface PaymentMethod {
   };
   is_default: boolean;
 }
+
+// Transaction History types
+export interface Invoice {
+  id: string;
+  transaction_id: string;
+  pdf_url: string;
+  issue_date: string;
+  created_at: string;
+}
+
+export interface Refund {
+  id: string;
+  transaction_id: string;
+  user_id: string;
+  request_date: string;
+  status: 'pending' | 'approved' | 'rejected' | 'processed';
+  reason?: string;
+  amount?: number;
+  processed_at?: string;
+}
+
+export interface BillingContact {
+  id: string;
+  user_id: string;
+  contact_name: string;
+  email: string;
+  phone?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TransactionWithDetails extends Transaction {
+  plan_name?: string;
+  invoice?: Invoice;
+  refunds?: Refund[];
+}

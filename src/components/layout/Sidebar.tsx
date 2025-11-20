@@ -8,7 +8,8 @@ import {
   HelpCircle,
   Users,
   BarChart3,
-  Video
+  Video,
+  Receipt
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,7 @@ const navigation = [
   { name: "Library", href: "/dashboard/library", icon: Library },
   { name: "Upload", href: "/dashboard/upload", icon: Upload },
   { name: "Courses", href: "/dashboard/courses", icon: BookOpen },
+  { name: "Transactions", href: "/dashboard/transactions", icon: Receipt },
   { name: "Settings", href: "/dashboard/settings", icon: Settings },
   { name: "Help", href: "/dashboard/help", icon: HelpCircle },
 ];
