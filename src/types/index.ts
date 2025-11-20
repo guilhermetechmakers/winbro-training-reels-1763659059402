@@ -175,3 +175,37 @@ export interface Analytics {
   by_machine_model: Record<string, number>;
   by_date: Array<{ date: string; views: number }>;
 }
+
+// Reel Version types
+export interface ReelVersion {
+  id: string;
+  reel_id: string;
+  version_number: number;
+  changes: Record<string, { from: unknown; to: unknown }>;
+  created_by: string;
+  created_at: string;
+  metadata_snapshot: Partial<Reel>;
+}
+
+// Permission types
+export interface ReelPermission {
+  id: string;
+  reel_id: string;
+  user_id?: string;
+  role?: string;
+  access_level: 'view' | 'edit' | 'admin';
+  visibility: 'tenant' | 'public' | 'internal';
+  created_at: string;
+  updated_at: string;
+}
+
+// Reprocess status types
+export interface ReprocessStatus {
+  id: string;
+  reel_id: string;
+  status: 'pending' | 'processing' | 'completed' | 'failed';
+  progress?: number;
+  error_message?: string;
+  started_at: string;
+  completed_at?: string;
+}
